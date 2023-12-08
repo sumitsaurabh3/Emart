@@ -16,3 +16,12 @@ const loginWith="Login with";
 const alreadyAccount="Already have an Account ? ";
 const privacyPolicy="Privacy Policy";
 const termAndCond="Terms and Conditions";
+//home
+const home="Home",categories="Categories",cart="Cart",account="Account";
+//home screen
+const searchemart="Search Emart...";
+const todaydeal="Today's Deal";
+const topSellers="Top Sellers",flashSale="Flash Sale";
+const brand="Brand";
+const topCategories="Top Categories",
+      featuredCategories="Featured Categories";

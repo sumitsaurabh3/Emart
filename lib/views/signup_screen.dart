@@ -6,9 +6,15 @@ import 'package:emart/widgets_common/custom_textfield.dart';
 import 'package:emart/widgets_common/our_button.dart';
 import 'package:get/get.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  bool isCheck=false;
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -32,24 +38,28 @@ class SignupScreen extends StatelessWidget {
                     children: [
                       Checkbox(
                           checkColor: redColor,
-                          value: false,
-                          onChanged: (newvalue) {}),
+                          value: isCheck,
+                          onChanged: (newvalue) {
+                            setState(() {
+                              isCheck=newvalue!;
+                            });
+                          }),
                       10.widthBox,
                       Expanded(
                         child: RichText(
                             text: const TextSpan(children: [
                           TextSpan(
                               text: "I agree to the ",
-                              style: TextStyle(fontFamily: bold, color: fontGrey)),
+                              style: TextStyle(fontFamily: regular, color: fontGrey)),
                               TextSpan(
                                   text: "$termAndCond",
-                                  style: TextStyle(fontFamily: bold, color:Colors.red)),
+                                  style: TextStyle(fontFamily:regular, color:Colors.red)),
                               TextSpan(
                                   text: "&",
-                                  style: TextStyle(fontFamily: bold, color: Colors.red)),
+                                  style: TextStyle(fontFamily: regular, color: Colors.red)),
                               TextSpan(
                                   text: " $privacyPolicy",
-                                  style: TextStyle(fontFamily: bold, color: Colors.red))
+                                  style: TextStyle(fontFamily: regular, color: Colors.red))
                         ])
                         ),
                       )
@@ -60,7 +70,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                   5.heightBox,
                   ourButton(
-                          color: redColor,
+                          color:isCheck == true? redColor : lightGrey,
                           title: signup,
                           textColor: whiteColor,
                           onPress: () {})
@@ -69,20 +79,14 @@ class SignupScreen extends StatelessWidget {
                       .make(),
                   10.heightBox,
                   //wrapping into gesture detector of velocity x
-                  RichText(text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: alreadyAccount,
-                        style: TextStyle(fontFamily: bold,color: fontGrey),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+                      alreadyAccount.text.color(fontGrey).make(),
+                      login.text.color(redColor).make().onTap(() {
+                        Get.back();
 
-                      ),
-                      TextSpan(
-                        text: login,
-                        style: TextStyle(fontFamily: bold,color: Colors.red),
-
-                      )
-                    ]
-                  )).onTap(() { Get.back();}),
+                      })]),
 
                 ],
               )

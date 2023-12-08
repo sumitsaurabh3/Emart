@@ -1,12 +1,13 @@
 import 'package:emart/consts/consts.dart';
 import 'package:emart/consts/lists.dart';
+import 'package:emart/views/home_screen.dart';
+import 'package:emart/views/home_screen/home.dart';
 import 'package:emart/views/signup_screen.dart';
 import 'package:emart/widgets_common/applogo_widget.dart';
 import 'package:emart/widgets_common/bg_widget.dart';
 import 'package:emart/widgets_common/custom_textfield.dart';
 import 'package:emart/widgets_common/our_button.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -31,7 +32,9 @@ class LoginScreen extends StatelessWidget {
                     alignment: Alignment.centerRight,
                       child: TextButton(onPressed: (){}, child: forgetPass.text.fontFamily(bold).make())),
                   5.heightBox,
-                  ourButton(color: redColor,title: login,textColor: whiteColor,onPress: (){}).box.width(context.screenWidth-50).make(),
+                  ourButton(color: redColor,title: login,textColor: whiteColor,onPress: (){
+                    Get.to(()=> const Home());
+                  }).box.width(context.screenWidth-50).make(),
                   5.heightBox,
                   createNewAccount.text.color(fontGrey).fontFamily(bold).make(),
                   5.heightBox,
@@ -49,8 +52,7 @@ class LoginScreen extends StatelessWidget {
                                padding: const EdgeInsets.all(8.0),
                                child: CircleAvatar(
                                  backgroundColor: lightGrey,
-                                 radius: 25,
-                                                      child: Image.asset(socialIconList[index],width: 30,),
+                                 radius: 25, child: Image.asset(socialIconList[index],width: 30,),
                                                     ),
                              )),
 
